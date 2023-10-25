@@ -18,7 +18,7 @@ export class Category extends Document {
   status: boolean;
 
   @Prop({ type: [{ type: Types.ObjectId, ref: Product.name }] })
-  products: Product;
+  products: Types.Array<Product>;
 }
 
 export const CategorySchema = SchemaFactory.createForClass(Category);
