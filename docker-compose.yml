@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+
+  app: 
+
+    build:
+     context: .
+     target: ${STAGE}
+     dockerfile: Dockerfile
+    
+    #command: npm run start:dev
+
+    volumes:
+      - .:/app/
+      - /app/node_modules
+    
+    container_name: beauty-consultant
+    ports:
+      - ${PORT}:${PORT}
+    environment:
+      MONGODB: ${MONGODB}
+      #DB_NAME: ${MONGO_DB_NAME}
+    restart: always
+#  db:
+#    image: mongo:latest
+#    restart: always
+#    ports:
+#      - 27017:27017
+#    environment:
+#      MONGODB_DATABASE: entrenador-personal
+#    volumes:
+#      - mongo:/data/db
+#volumes:
+#  mongo:
