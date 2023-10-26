@@ -26,7 +26,9 @@ export class FilesService {
   getStaticFile(imageName: string, coleccion: string) {
     const path = join(__dirname, `../../static/${coleccion}`, imageName);
     if (!existsSync(path)) {
-      throw new BadRequestException(`No user found with image: ${imageName}`);
+      throw new BadRequestException(
+        `No ${coleccion} found with image: ${imageName}`,
+      );
     }
     return path;
   }
